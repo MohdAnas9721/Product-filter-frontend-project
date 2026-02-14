@@ -23,6 +23,17 @@ body{background:#0b1220;color:#e5e7eb;min-height:100vh;}
   outline:none;
 }
 
+.controls input::placeholder{ color: #9ca3af; }
+
+/* keyboard focus (accessibility) */
+.controls input:focus-visible,
+.controls select:focus-visible,
+.btn:focus-visible{
+  outline: 3px solid rgba(56,189,248,0.18);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.05);
+}
+
 .controls input{width:240px;}
 .hint{margin:14px 0;color:#a1a1aa;font-size:14px;}
 
@@ -38,7 +49,34 @@ body{background:#0b1220;color:#e5e7eb;min-height:100vh;}
   background:#111b31;
   border-radius:14px;
   padding:14px;
+  overflow:hidden;
+  transition: box-shadow .12s ease, transform .12s ease;
 }
+
+.product-img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:12px;
+  display:block;
+}
+
+.meta{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-bottom:8px;
+  color:#a1a1aa;
+  font-size:13px;
+}
+
+.rating{ color:#fbbf24; font-weight:700; }
+
+.stock.in-stock{ color:#86efac; font-weight:600; }
+.stock.out-of-stock{ color:#fca5a5; font-weight:700; }
+
+.card:hover{ transform: translateY(-4px); box-shadow: 0 8px 30px rgba(2,6,23,0.6); }
 
 .badge{
   display:inline-block;

@@ -13,16 +13,16 @@
       <h1 class="logo">ShopLite</h1>
 
       <div class="controls">
-        <input id="searchInput" type="text" placeholder="Search product..." />
+        <input id="searchInput" type="text" placeholder="Search product..." aria-label="Search products" />
 
-        <select id="categorySelect">
+        <select id="categorySelect" aria-label="Filter by category">
           <option value="all">All Categories</option>
           <option value="shoes">Shoes</option>
           <option value="watches">Watches</option>
           <option value="phones">Phones</option>
         </select>
 
-        <select id="sortSelect">
+        <select id="sortSelect" aria-label="Sort products">
           <option value="default">Sort: Default</option>
           <option value="low">Price: Low to High</option>
           <option value="high">Price: High to Low</option>
@@ -32,11 +32,194 @@
   </header>
 
   <main class="container">
-    <p class="hint" id="countText"></p>
+    <p class="hint" id="countText" role="status" aria-live="polite"></p>
 
-    <section class="grid" id="productGrid"></section>
+    <section class="grid" id="productGrid">
+      <!-- Static product cards (12) - data attributes used for filtering/sorting -->
 
-    <p class="empty" id="emptyText">No products found.</p>
+      <div class="card" data-id="1" data-name="Air Runner Shoes" data-desc="Comfortable running shoes for daily use." data-category="shoes" data-price="1999" data-rating="4.5" data-stock="12">
+        <img class="product-img" src="images/air-runner-shoes.svg" alt="Air Runner Shoes" loading="lazy" />
+        <span class="badge">shoes</span>
+        <h3>Air Runner Shoes</h3>
+        <p>Comfortable running shoes for daily use.</p>
+        <div class="meta">
+          <span class="rating">★ 4.5</span>
+          <span class="stock in-stock">12 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹1,999</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="2" data-name="Classic Leather Shoes" data-desc="Formal shoes with premium leather finish." data-category="shoes" data-price="2999" data-rating="4.2" data-stock="5">
+        <img class="product-img" src="images/classic-leather-shoes.svg" alt="Classic Leather Shoes" loading="lazy" />
+        <span class="badge">shoes</span>
+        <h3>Classic Leather Shoes</h3>
+        <p>Formal shoes with premium leather finish.</p>
+        <div class="meta">
+          <span class="rating">★ 4.2</span>
+          <span class="stock in-stock">5 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹2,999</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="3" data-name="Trail Runner X" data-desc="Lightweight trail shoes with extra grip." data-category="shoes" data-price="2499" data-rating="4.6" data-stock="8">
+        <img class="product-img" src="images/trail-runner-x.svg" alt="Trail Runner X" loading="lazy" />
+        <span class="badge">shoes</span>
+        <h3>Trail Runner X</h3>
+        <p>Lightweight trail shoes with extra grip.</p>
+        <div class="meta">
+          <span class="rating">★ 4.6</span>
+          <span class="stock in-stock">8 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹2,499</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="4" data-name="Mountain Pro Boots" data-desc="Durable boots for rough terrain." data-category="shoes" data-price="3499" data-rating="4.4" data-stock="3">
+        <img class="product-img" src="images/mountain-pro-boots.svg" alt="Mountain Pro Boots" loading="lazy" />
+        <span class="badge">shoes</span>
+        <h3>Mountain Pro Boots</h3>
+        <p>Durable boots for rough terrain.</p>
+        <div class="meta">
+          <span class="rating">★ 4.4</span>
+          <span class="stock in-stock">3 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹3,499</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="5" data-name="Smart Watch Pro" data-desc="Track steps, heart rate, and notifications." data-category="watches" data-price="3499" data-rating="4.7" data-stock="10">
+        <img class="product-img" src="images/smart-watch-pro.svg" alt="Smart Watch Pro" loading="lazy" />
+        <span class="badge">watches</span>
+        <h3>Smart Watch Pro</h3>
+        <p>Track steps, heart rate, and notifications.</p>
+        <div class="meta">
+          <span class="rating">★ 4.7</span>
+          <span class="stock in-stock">10 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹3,499</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="6" data-name="Minimal Watch" data-desc="Simple design, perfect for everyday style." data-category="watches" data-price="1499" data-rating="4.0" data-stock="0">
+        <img class="product-img" src="images/minimal-watch.svg" alt="Minimal Watch" loading="lazy" />
+        <span class="badge">watches</span>
+        <h3>Minimal Watch</h3>
+        <p>Simple design, perfect for everyday style.</p>
+        <div class="meta">
+          <span class="rating">★ 4.0</span>
+          <span class="stock out-of-stock">Out of stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹1,499</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="7" data-name="Chrono Sport Watch" data-desc="Sporty chronograph with water resistance." data-category="watches" data-price="2799" data-rating="4.3" data-stock="4">
+        <img class="product-img" src="images/chrono-sport-watch.svg" alt="Chrono Sport Watch" loading="lazy" />
+        <span class="badge">watches</span>
+        <h3>Chrono Sport Watch</h3>
+        <p>Sporty chronograph with water resistance.</p>
+        <div class="meta">
+          <span class="rating">★ 4.3</span>
+          <span class="stock in-stock">4 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹2,799</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="8" data-name="Fitness Band" data-desc="Lightweight band for activity tracking." data-category="watches" data-price="1299" data-rating="4.1" data-stock="20">
+        <img class="product-img" src="images/fitness-band.svg" alt="Fitness Band" loading="lazy" />
+        <span class="badge">watches</span>
+        <h3>Fitness Band</h3>
+        <p>Lightweight band for activity tracking.</p>
+        <div class="meta">
+          <span class="rating">★ 4.1</span>
+          <span class="stock in-stock">20 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹1,299</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="9" data-name="Phone Max 5G" data-desc="Fast performance with 5G support." data-category="phones" data-price="15999" data-rating="4.8" data-stock="6">
+        <img class="product-img" src="images/phone-max-5g.svg" alt="Phone Max 5G" loading="lazy" />
+        <span class="badge">phones</span>
+        <h3>Phone Max 5G</h3>
+        <p>Fast performance with 5G support.</p>
+        <div class="meta">
+          <span class="rating">★ 4.8</span>
+          <span class="stock in-stock">6 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹15,999</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="10" data-name="Phone Lite" data-desc="Budget phone with strong battery backup." data-category="phones" data-price="9999" data-rating="4.1" data-stock="15">
+        <img class="product-img" src="images/phone-lite.svg" alt="Phone Lite" loading="lazy" />
+        <span class="badge">phones</span>
+        <h3>Phone Lite</h3>
+        <p>Budget phone with strong battery backup.</p>
+        <div class="meta">
+          <span class="rating">★ 4.1</span>
+          <span class="stock in-stock">15 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹9,999</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="11" data-name="Phone Mini" data-desc="Compact phone with powerful performance." data-category="phones" data-price="7999" data-rating="4.0" data-stock="9">
+        <img class="product-img" src="images/phone-mini.svg" alt="Phone Mini" loading="lazy" />
+        <span class="badge">phones</span>
+        <h3>Phone Mini</h3>
+        <p>Compact phone with powerful performance.</p>
+        <div class="meta">
+          <span class="rating">★ 4.0</span>
+          <span class="stock in-stock">9 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹7,999</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+      <div class="card" data-id="12" data-name="Phone Ultra" data-desc="Flagship phone with pro camera." data-category="phones" data-price="24999" data-rating="4.9" data-stock="2">
+        <img class="product-img" src="images/phone-ultra.svg" alt="Phone Ultra" loading="lazy" />
+        <span class="badge">phones</span>
+        <h3>Phone Ultra</h3>
+        <p>Flagship phone with pro camera.</p>
+        <div class="meta">
+          <span class="rating">★ 4.9</span>
+          <span class="stock in-stock">2 in stock</span>
+        </div>
+        <div class="row">
+          <div class="price">₹24,999</div>
+          <button class="btn" type="button">Add</button>
+        </div>
+      </div>
+
+    </section>
+
+    <p class="empty" id="emptyText" role="status" aria-live="polite" aria-hidden="true">No products found.</p>
   </main>
 
   <script src="script.js"></script>
